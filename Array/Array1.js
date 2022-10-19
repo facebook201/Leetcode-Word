@@ -6,7 +6,7 @@
  * @param {number} target
  * @return {number[]}
  * 
- * todo 利用一个数据结构来存储，空间换时间
+ * 利用一个数据结构来存储，空间换时间
  * 
  * 输入：nums = [2,7,11,15], target = 9
    输出：[0,1]
@@ -41,46 +41,52 @@ const target = 9;
  * 双指针移动 不需要要删除重复的的元素
  */
 
-const nums1 = [0, 0, 1, 1, 2, 2, 3, 4, 6, 7];
+const nums1 = [0, 0, 1, 1, 2, 4, 5, 6, 6, 7];
 
 function removeDuplicates(nums) {
   if (nums == null || !nums.length) {
     return 0;
   }
 
-  let first = 0;
-  let second = 1;
-  let len = 1;
+  let p = 0; // 头指针
+  let q = 1; // 尾指针
 
-  while (second < nums.length) {
-    // 如果相等就 +1
-    if (nums[first] !== nums[second]) {
-      len++; 
-    } else {
-      nums[first] = nums[second];
+  while (q < nums.length) {
+    // 如果不想等就移动慢指针
+    if (nums[p] !== nums[q]) {
+      // 优化相邻两个元素之间没有重复值的时候 不需要赋值
+      if (q - p > 1) {
+        // 不想等就赋值盖掉重复的值
+        nums[p + 1] = nums[q];
+      }
+      p++;
     }
-    first++;
-    second++;
+    // 快指针负责遍历
+    q++;
   }
-  console.log(len)
-  return len;
+  return p + 1;
 }
 
+// nums [0, 1, 2, 4, 5, 6, 7,(P 指针指向7) 6, 6, 7]
 removeDuplicates(nums1);
 
 
+/**
+ * Leetcode 27 移除元素
+ * 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+ * 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
+ * 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
+ * 
+ * @param {number[]} nums
+ * @param {number} val
+ */
 
+const nums3 = [0, 1, 2, 2, 3, 0, 4, 2];
 
+// 5, nums = [0, 1, 4, 0, 3]
+function removeElement(nums, val) {
 
-
-
-
-
-
-
-
-
-
+}
 
 
 
