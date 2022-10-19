@@ -83,14 +83,50 @@ removeDuplicates(nums1);
 
 const nums3 = [0, 1, 2, 2, 3, 0, 4, 2];
 
-// 5, nums = [0, 1, 4, 0, 3]
 function removeElement(nums, val) {
+  if (!nums || nums.length === 0) {
+    return 0;
+  }
 
+  let l = 0; // 左
+  let r = nums.length; // 右
+
+  // 双指针优化
+  while (l < r) {
+    if (val === nums[l]) {
+      nums[l] = nums[r - 1];
+      r--;
+    } else {
+      l++;
+    }
+  }
+  console.log(l, nums);
+
+  let i = 0;
+  // 遍历
+  for (const num of nums) {
+    if (num !== val) {
+      nums[i] = num;
+      i++
+    }
+  }
+
+  return i;
 }
 
+removeElement(nums3, 2);
 
 
 
+/**
+ * Leetcode 35 插入元素 二分查找 O(logn)
+ * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+ */
+const nums4 = [1,3,5,6];
 
+function searchInsert(nums, target) {
 
+};
+
+searchInsert(nums4, 2);
 
