@@ -26,7 +26,7 @@ singleNumber(nums);
  * 
  */
 function hammingWeight(n) {
-  const numberCollect = n.toString(2);
+  const numberCollect = 
 
   console.log(numberCollect);
 
