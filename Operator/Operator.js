@@ -23,22 +23,25 @@ singleNumber(nums);
 
 
 /**
- * 
+ * 编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数。
+ * sy & 运算符同为1就是1, 否则都为0
+ *
+ * 逐渐依次相比 比如  xxx1xxx1xxx1xx1xx111xx
+ *               
+ * 1 11 111 1111 11111（）
+ * 逐渐进行 & 操作 其他位是0 就可以依次判断是不是1 
  */
 function hammingWeight(n) {
-  const numberCollect = 
-
-  console.log(numberCollect);
-
   let count = 0;
-
-  for (const n of numberCollect) {
-    if (n & 1 === 1) {
+  for (let i = 0; i < 32; i++) {
+    // 不等于 0 表示有1
+    if ((n & (1 << i)) !== 0) {
       count++;
     }
   }
-  console.log(count)
+
   return count;
 }
 
 hammingWeight(00000000000000000000000000001011);
+
